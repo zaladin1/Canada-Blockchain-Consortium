@@ -1,0 +1,112 @@
+---
+import { siteImages } from '../data/consortium';
+
+const currentYear = new Date().getFullYear();
+---
+
+<!-- Bright-Inverse Footer matching mybtccanada.ca with CLOUDS.png backdrop and CBC_MAPLE_4C.png logo -->
+<footer class="relative bg-surface text-cobalt border-t border-hairline overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none opacity-35">
+    <img
+      src={siteImages.clouds}
+      alt=""
+      aria-hidden="true"
+      class="w-full h-full object-cover object-center"
+    />
+  </div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center space-y-10">
+    <!-- Newsletter Block -->
+    <div class="max-w-xl mx-auto space-y-4">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-cobalt">
+        Stay up-to-date with our Bitcoin Brief
+      </h2>
+      <p class="text-sm text-charcoal">
+        We respect your privacy.
+      </p>
+
+      <form id="footer-brief-form" class="pt-2 space-y-3" novalidate>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <label for="footer-brief-email" class="sr-only">Email Address</label>
+          <input
+            id="footer-brief-email"
+            name="email"
+            type="email"
+            required
+            placeholder="Email Address"
+            class="flex-1 min-h-12 px-4 py-3 bg-surface border border-hairline text-sm text-ink placeholder:text-charcoal/60 focus:outline-none focus:border-cobalt"
+          />
+          <button
+            type="submit"
+            class="min-h-12 px-7 py-3 bg-cobalt hover:bg-cobalt-dark text-white text-sm font-semibold whitespace-nowrap shrink-0 transition-colors cursor-pointer"
+          >
+            Sign Up
+          </button>
+        </div>
+        <p id="footer-brief-error" class="hidden text-xs text-red-700" role="alert"></p>
+        <div id="footer-brief-success" class="hidden p-4 bg-surface/95 border border-cobalt/30 text-sm text-charcoal leading-relaxed text-left" role="status">
+          <p class="font-semibold text-cobalt mb-1">
+            Thank you for signing up to receive our Monthly Bitcoin Brief! We’re excited to keep you informed about the latest developments in national and North American policies impacting the industry.
+          </p>
+          <p class="text-xs">
+            In each edition, you’ll learn how the Canadian Bitcoin Consortium is tackling these critical issues, gain insights into global Bitcoin trends, and stay updated on our incredible events. We appreciate your interest and look forward to sharing valuable information with you each month!
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <!-- Center Logo + Links -->
+    <div class="pt-8 border-t border-hairline/70 flex flex-col items-center gap-6">
+      <a href="/" class="inline-block">
+        <img
+          src={siteImages.logo}
+          alt="Canadian Bitcoin Consortium"
+          class="h-14 w-auto object-contain"
+        />
+      </a>
+
+      <nav aria-label="Footer Navigation" class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-cobalt font-medium">
+        <a href="/policies-research" class="hover:underline">Policies &amp; Research</a>
+        <a href="/industry-responses" class="hover:underline">Industry Responses</a>
+        <a href="/reports" class="hover:underline">Reports</a>
+        <a href="/membership" class="hover:underline">Membership</a>
+        <a href="/events" class="hover:underline">Events</a>
+        <a href="/bitcoin-brief" class="hover:underline">Bitcoin Brief</a>
+        <a href="/contact" class="hover:underline">Contact</a>
+        <a href="/fraud-statement" class="hover:underline">Fraud Statement</a>
+        <a href="/terms-and-policy" class="hover:underline">Terms &amp; Policy</a>
+      </nav>
+
+      <p class="text-xs text-charcoal">
+        &copy; {currentYear} Canadian Bitcoin Consortium · <a href="mailto:info@mybtccanada.ca" class="text-cobalt hover:underline">info@mybtccanada.ca</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const briefForm = document.getElementById('footer-brief-form') as HTMLFormElement | null;
+  const briefInput = document.getElementById('footer-brief-email') as HTMLInputElement | null;
+  const briefError = document.getElementById('footer-brief-error');
+  const briefSuccess = document.getElementById('footer-brief-success');
+
+  if (briefForm && briefInput && briefError && briefSuccess) {
+    briefForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = briefInput.value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailPattern.test(email)) {
+        briefError.textContent = 'Please enter a valid email address to subscribe.';
+        briefError.classList.remove('hidden');
+        briefSuccess.classList.add('hidden');
+        briefInput.focus();
+        return;
+      }
+
+      briefError.classList.add('hidden');
+      briefSuccess.classList.remove('hidden');
+      briefInput.value = '';
+    });
+  }
+</script>

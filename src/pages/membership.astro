@@ -1,0 +1,315 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import membersMap from '../data/members-map.json';
+import { siteImages } from '../data/consortium';
+
+const tierSections = [
+  { title: 'DIAMOND', key: 'DIAMOND', cols: 'grid-cols-2 sm:grid-cols-4' },
+  { title: 'PLATINUM', key: 'PLATINUM', cols: 'grid-cols-2 sm:grid-cols-4 lg:grid-cols-5' },
+  { title: 'GOLD', key: 'GOLD', cols: 'grid-cols-2 sm:grid-cols-4 lg:grid-cols-5' },
+  { title: 'SILVER', key: 'SILVER', cols: 'grid-cols-2 sm:grid-cols-5' },
+  { title: 'BRONZE & COMMUNITY PARTNERS', key: 'BRONZE & COMMUNITY PARTNERS', cols: 'grid-cols-2 sm:grid-cols-4 lg:grid-cols-5' },
+] as const;
+
+const exactPackages = [
+  {
+    name: 'Diamond - 40K',
+    subtitle: '',
+    items: [
+      'Monthly call with the executive team',
+      'Business development support in the blockchain industry',
+      'Branding on any research paper the consortium produces in a calendar year',
+      'Opportunity to participate in industry responses to the regulators',
+      'Participation in virtual parliamentary days',
+      'Panel curation of 1 panel at a summit event in the province of your choice',
+      'Speaking opportunity at two summit events in the province of your choice',
+      'Panel curation at a summit series event in the province of your choice',
+      'Host a summit event at your office location',
+      'Option to apply for board membership',
+      'Branding during one summit series event',
+      'Consulting Services',
+    ],
+  },
+  {
+    name: 'Platinum - 25K',
+    subtitle: 'Choose eight additional offerings from the following:',
+    items: [
+      'Monthly call with the executive team',
+      'Business development support in the blockchain industry',
+      'Branding on any research paper the consortium produces in a calendar year',
+      'Opportunity to participate in industry responses to regulators',
+      'Participation in virtual parliamentary days',
+      'Panel curation of 1 panel at a summit event in the province of your choice',
+      'Speaking opportunity at two summit events in the province of your choice',
+      'Panel curation at a summit series event in the province of your choice',
+      'Host a summit event at your office location',
+      'Branding during one summit series event',
+    ],
+  },
+  {
+    name: 'Gold - 15K',
+    subtitle: 'Choose five additional offerings from the following:',
+    items: [
+      'Monthly call with the executive team',
+      'Business development support in the blockchain industry',
+      'Branding on any research paper the consortium produces in a calendar year',
+      'Opportunity to participate in industry responses to regulators',
+      'Participation in virtual parliamentary days',
+      'Panel curation of 1 panel at a summit event in the province of your choice',
+      'Speaking opportunity at a summit event in the province of your choice',
+    ],
+  },
+  {
+    name: 'Silver - 10K',
+    subtitle: 'Choose three additional offerings from the following:',
+    items: [
+      'Bi-monthly call with the executive team',
+      'Opportunity to participate in industry responses to regulators',
+      'Branding on any research paper the consortium produces in a calendar year',
+      'Speaking opportunity at a summit event in the province of your choice',
+    ],
+  },
+  {
+    name: 'Bronze - 5K',
+    subtitle: 'Choose two additional offerings from the following:',
+    items: [
+      'Bi-monthly call with the executive team',
+      'Opportunity to participate in industry responses to regulators',
+      'Branding on any research paper the consortium produces in a calendar year',
+    ],
+  },
+];
+
+const baseBenefits = [
+  'Listed on the Canadian Bitcoin Consortium website',
+  'Company spotlight on social media – marketing',
+  'Brand amplification across social media channels',
+  'Regular communication on consortium activities',
+  'Ability to apply for associate captive insurance',
+  'Annual AGM Summit (Members Only)',
+];
+---
+
+<BaseLayout
+  currentPath="/membership"
+  title="MEMBERSHIP | Canadian Bitcoin Consortium"
+  description="Our Community: Diamond, Platinum, Gold, Silver, and Bronze & Community Partners of the Canadian Bitcoin Consortium."
+>
+  <!-- Section 1: Banner with CLOUDS.png matching original /membership -->
+  <section class="relative bg-canvas py-16 sm:py-24 border-b border-hairline overflow-hidden">
+    <img
+      src={siteImages.clouds}
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover opacity-55 pointer-events-none"
+    />
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="font-display text-5xl sm:text-6xl font-bold tracking-tight text-cobalt uppercase">
+        MEMBERSHIP
+      </h1>
+    </div>
+  </section>
+
+  <!-- Section 2 [white-bold]: Our Community + ALL 58 Original Member Graphics -->
+  <section class="bg-surface py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <div class="text-center space-y-3">
+        <h2 class="font-display text-4xl sm:text-5xl font-bold text-cobalt">
+          Our Community
+        </h2>
+      </div>
+
+      {tierSections.map((tier) => {
+        const logos = membersMap[tier.key as keyof typeof membersMap] || [];
+        return (
+          <div class="space-y-8 pt-6 border-t border-hairline first:border-t-0 first:pt-0">
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-cobalt text-center tracking-wide uppercase">
+              {tier.title}
+            </h3>
+
+            <div class={`grid ${tier.cols} gap-6 items-center justify-items-center`}>
+              {logos.map((logo, idx) => (
+                <div class="w-full h-28 sm:h-32 p-4 bg-white border border-hairline/60 flex items-center justify-center">
+                  <img
+                    src={`/images/members/${logo.file}`}
+                    alt={`${tier.title} Member ${idx + 1}`}
+                    loading="lazy"
+                    class="max-h-20 sm:max-h-24 max-w-full w-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+
+      <div class="pt-8 border-t border-hairline text-center space-y-3">
+        <p class="font-display text-xl sm:text-2xl font-bold text-cobalt">
+          Want to discuss this with your Team? Download our Membership Brochure.
+        </p>
+        <p class="text-xs text-charcoal">(View downloaded PDF for proper formatting)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3 [bright]: Cobalt Blue #4153B6 Become a Member Tiers & Base Benefits -->
+  <section class="bg-cobalt text-white py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="max-w-4xl space-y-4">
+        <h2 class="font-display text-4xl sm:text-5xl font-bold text-white">
+          Become a Member
+        </h2>
+        <p class="text-base sm:text-lg text-white/95 leading-relaxed">
+          This customizable membership package will allow the consortium to focus directly on supporting your organization’s needs and deliver enhanced value like never before.
+        </p>
+        <p class="text-sm sm:text-base text-white/90 leading-relaxed">
+          All memberships will include the base level benefits. If you’re interested in an item in a different membership tier, please let us know.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {exactPackages.map((pkg) => (
+          <article class="p-6 sm:p-7 bg-white/10 border border-white/25 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <h3 class="font-display text-2xl sm:text-3xl font-bold text-white border-b border-white/20 pb-3">
+                {pkg.name}
+              </h3>
+              {pkg.subtitle && (
+                <p class="text-xs font-semibold text-white/90">{pkg.subtitle}</p>
+              )}
+              <ul class="space-y-2 text-sm text-white/90 list-disc pl-5 leading-relaxed">
+                {pkg.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <a
+              href="#apply"
+              data-select-tier={pkg.name}
+              class="inline-flex items-center justify-center min-h-11 px-4 py-2.5 bg-white text-cobalt hover:bg-canvas text-sm font-semibold whitespace-nowrap transition-colors"
+            >
+              Inquire About {pkg.name}
+            </a>
+          </article>
+        ))}
+
+        <!-- Base Level Benefits -->
+        <article class="p-6 sm:p-7 bg-white text-ink border border-white flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-cobalt border-b border-hairline pb-3">
+              Base
+            </h3>
+            <p class="text-xs font-semibold text-charcoal">
+              Included with every Consortium membership tier:
+            </p>
+            <ul class="space-y-2.5 text-sm text-charcoal list-disc pl-5 leading-relaxed">
+              {baseBenefits.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+          </div>
+          <a
+            href="#apply"
+            class="inline-flex items-center justify-center min-h-11 px-4 py-2.5 bg-cobalt text-white hover:bg-cobalt-dark text-sm font-semibold whitespace-nowrap transition-colors"
+          >
+            Apply Now
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4 [light-bold]: Join the Consortium + Inquiry Form -->
+  <section id="apply" class="bg-canvas py-16 lg:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="text-center space-y-3">
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-cobalt">
+          Join the Consortium
+        </h2>
+        <p class="text-base text-charcoal">
+          Be part of Canada’s leading voice for Bitcoin through advocacy, research, education, and community.
+        </p>
+      </div>
+
+      <form id="membership-form" class="p-6 sm:p-8 bg-surface border border-hairline space-y-5" novalidate>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="mem-name" class="block text-xs font-semibold text-ink mb-1.5">Full Name</label>
+            <input id="mem-name" type="text" required class="w-full min-h-11 px-3.5 py-2 border border-hairline bg-canvas text-sm text-ink focus:outline-none focus:border-cobalt" />
+          </div>
+          <div>
+            <label for="mem-company" class="block text-xs font-semibold text-ink mb-1.5">Company / Organization</label>
+            <input id="mem-company" type="text" required class="w-full min-h-11 px-3.5 py-2 border border-hairline bg-canvas text-sm text-ink focus:outline-none focus:border-cobalt" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="mem-email" class="block text-xs font-semibold text-ink mb-1.5">Work Email</label>
+            <input id="mem-email" type="email" required class="w-full min-h-11 px-3.5 py-2 border border-hairline bg-canvas text-sm text-ink focus:outline-none focus:border-cobalt" />
+          </div>
+          <div>
+            <label for="mem-tier" class="block text-xs font-semibold text-ink mb-1.5">Membership Tier</label>
+            <select id="mem-tier" class="w-full min-h-11 px-3.5 py-2 border border-hairline bg-canvas text-sm text-ink focus:outline-none focus:border-cobalt">
+              {exactPackages.map((p) => (
+                <option value={p.name}>{p.name}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="mem-notes" class="block text-xs font-semibold text-ink mb-1.5">Notes / Custom Package Preferences</label>
+          <textarea id="mem-notes" rows="4" class="w-full px-3.5 py-2.5 border border-hairline bg-canvas text-sm text-ink focus:outline-none focus:border-cobalt" placeholder="Let us know which offerings or provincial summits you would like to prioritize."></textarea>
+        </div>
+
+        <p id="mem-error" class="hidden text-xs text-red-700" role="alert"></p>
+        <div id="mem-success" class="hidden p-4 bg-canvas border border-cobalt/30 text-sm text-ink" role="status">
+          Thank you for your membership inquiry. Our team will reach out shortly with the Membership Brochure and onboarding details.
+        </div>
+
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center min-h-11 px-6 py-3 bg-cobalt hover:bg-cobalt-dark text-white text-sm font-semibold cursor-pointer transition-colors"
+        >
+          Submit Membership Inquiry
+        </button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const tierSelect = document.getElementById('mem-tier') as HTMLSelectElement | null;
+  document.querySelectorAll('[data-select-tier]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const tier = link.getAttribute('data-select-tier');
+      if (tierSelect && tier) tierSelect.value = tier;
+    });
+  });
+
+  const form = document.getElementById('membership-form') as HTMLFormElement | null;
+  const errEl = document.getElementById('mem-error');
+  const okEl = document.getElementById('mem-success');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = (document.getElementById('mem-name') as HTMLInputElement).value.trim();
+    const company = (document.getElementById('mem-company') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('mem-email') as HTMLInputElement).value.trim();
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!name || !company || !validEmail) {
+      if (errEl) {
+        errEl.textContent = 'Please provide your name, company name, and a valid work email.';
+        errEl.classList.remove('hidden');
+      }
+      okEl?.classList.add('hidden');
+      return;
+    }
+
+    errEl?.classList.add('hidden');
+    okEl?.classList.remove('hidden');
+    form.reset();
+  });
+</script>

@@ -1,0 +1,6 @@
+{
+  "name": "Canadian Bitcoin Consortium",
+  "description": "Advocating for sound monetary policy, industry growth, and regulatory engagement in Canada's digital asset ecosystem.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

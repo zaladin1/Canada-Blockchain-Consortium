@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout
+  currentPath="/fraud-statement"
+  title="Fraud Statement | Canadian Bitcoin Consortium"
+  description="An important note about fraud and impersonation of Canadian Bitcoin Consortium staff."
+>
+  <PageHeader
+    eyebrow="Public Advisory"
+    title="Fraud Statement"
+    subtitle="An important note about fraud and impersonation of Canadian Bitcoin Consortium staff."
+  />
+
+  <section class="bg-canvas py-16 lg:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-base text-charcoal leading-relaxed">
+      <div class="p-6 sm:p-8 rounded-lg bg-surface border border-hairline space-y-4">
+        <h2 class="font-display text-2xl font-bold text-cobalt">Protecting Our Community from Impersonation</h2>
+        <p>
+          The Canadian Bitcoin Consortium is an industry advocacy and policy research association. Neither the Consortium nor any member of our leadership team—including Koleya Karringten, Jade Alberts, or Sara Ishaq-Raad—will ever solicit cryptocurrency transfers, investment deposits, wallet seed phrases, or private keys via Telegram, WhatsApp, X, LinkedIn, or unsolicited email.
+        </p>
+        <p>
+          All official Consortium communications originate exclusively from verified <span class="font-mono text-ink">@mybtccanada.ca</span> email addresses.
+        </p>
+        <p>
+          If you encounter any account impersonating Consortium staff or promoting investment schemes under our name, please report it immediately to <a href="mailto:info@mybtccanada.ca" class="text-cobalt font-semibold underline">info@mybtccanada.ca</a> and the Canadian Anti-Fraud Centre.
+        </p>
+      </div>
+
+      <a href="/" class="inline-block text-sm font-semibold text-cobalt hover:underline underline-offset-4">
+        Return to Home
+      </a>
+    </div>
+  </section>
+</BaseLayout>

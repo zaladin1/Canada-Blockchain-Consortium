@@ -1,0 +1,201 @@
+---
+import { siteImages } from '../data/consortium';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const researchActive =
+  currentPath.startsWith('/policies-research') ||
+  currentPath.startsWith('/industry-responses') ||
+  currentPath.startsWith('/reports');
+const isHome = currentPath === '/';
+---
+
+<header
+  id="site-header"
+  data-transparent-home={isHome ? 'true' : 'false'}
+  class={`top-0 left-0 right-0 z-40 transition-colors duration-200 ${
+    isHome
+      ? 'fixed bg-transparent border-b border-transparent'
+      : 'sticky bg-surface/95 backdrop-blur-sm border-b border-hairline'
+  }`}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-8">
+    <!-- Left: Official CBC Maple Logo -->
+    <a
+      href="/"
+      class="inline-flex items-center shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt"
+    >
+      <img
+        src={siteImages.logo}
+        alt="Canadian Bitcoin Consortium"
+        class="h-12 sm:h-14 w-auto object-contain"
+      />
+    </a>
+
+    <!-- Right: Exact mybtccanada.ca Navigation (Research & Insights dropdown + Membership + Events + Bitcoin Brief + Contact) -->
+    <nav aria-label="Primary Navigation" class="hidden lg:flex items-center gap-7">
+      <div class="relative group">
+        <button
+          type="button"
+          id="research-dropdown-btn"
+          aria-expanded="false"
+          aria-haspopup="true"
+          class={`inline-flex items-center gap-1.5 text-sm font-normal whitespace-nowrap shrink-0 py-2 cursor-pointer transition-colors ${
+            researchActive ? 'text-cobalt underline underline-offset-4' : 'text-ink hover:text-cobalt'
+          }`}
+        >
+          <span>Research &amp; Insights</span>
+          <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div
+          id="research-dropdown-menu"
+          class="hidden group-hover:block group-focus-within:block absolute left-0 top-full pt-1 w-52 z-50"
+        >
+          <div class="bg-surface border border-hairline rounded-md shadow-md py-2 flex flex-col">
+            <a
+              href="/policies-research"
+              class={`px-4 py-2 text-sm hover:bg-canvas transition-colors ${
+                currentPath.startsWith('/policies-research') ? 'text-cobalt font-semibold' : 'text-ink'
+              }`}
+            >
+              Policies &amp; Research
+            </a>
+            <a
+              href="/industry-responses"
+              class={`px-4 py-2 text-sm hover:bg-canvas transition-colors ${
+                currentPath.startsWith('/industry-responses') ? 'text-cobalt font-semibold' : 'text-ink'
+              }`}
+            >
+              Industry Responses
+            </a>
+            <a
+              href="/reports"
+              class={`px-4 py-2 text-sm hover:bg-canvas transition-colors ${
+                currentPath.startsWith('/reports') ? 'text-cobalt font-semibold' : 'text-ink'
+              }`}
+            >
+              Reports
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a
+        href="/membership"
+        class={`text-sm font-normal whitespace-nowrap shrink-0 py-2 transition-colors ${
+          currentPath.startsWith('/membership') ? 'text-cobalt underline underline-offset-4' : 'text-ink hover:text-cobalt'
+        }`}
+      >
+        Membership
+      </a>
+
+      <a
+        href="/events"
+        class={`text-sm font-normal whitespace-nowrap shrink-0 py-2 transition-colors ${
+          currentPath.startsWith('/events') ? 'text-cobalt underline underline-offset-4' : 'text-ink hover:text-cobalt'
+        }`}
+      >
+        Events
+      </a>
+
+      <a
+        href="/bitcoin-brief"
+        class={`text-sm font-normal whitespace-nowrap shrink-0 py-2 transition-colors ${
+          currentPath.startsWith('/bitcoin-brief') ? 'text-cobalt underline underline-offset-4' : 'text-ink hover:text-cobalt'
+        }`}
+      >
+        Bitcoin Brief
+      </a>
+
+      <a
+        href="/contact"
+        class={`text-sm font-normal whitespace-nowrap shrink-0 py-2 transition-colors ${
+          currentPath.startsWith('/contact') ? 'text-cobalt underline underline-offset-4' : 'text-ink hover:text-cobalt'
+        }`}
+      >
+        Contact
+      </a>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      id="mobile-menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-nav-drawer"
+      aria-label="Open Menu"
+      class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md border border-hairline bg-surface/90 text-ink hover:bg-canvas transition-colors cursor-pointer"
+    >
+      <svg id="icon-menu-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="icon-menu-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-nav-drawer" class="hidden lg:hidden border-t border-hairline bg-surface">
+    <nav aria-label="Mobile Navigation" class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+      <p class="px-3 pt-2 pb-1 text-xs font-mono text-charcoal/70">Research &amp; Insights</p>
+      <a href="/policies-research" class="px-3 py-2.5 text-sm text-ink hover:bg-canvas rounded-md">Policies &amp; Research</a>
+      <a href="/industry-responses" class="px-3 py-2.5 text-sm text-ink hover:bg-canvas rounded-md">Industry Responses</a>
+      <a href="/reports" class="px-3 py-2.5 text-sm text-ink hover:bg-canvas rounded-md">Reports</a>
+      <div class="my-1 border-t border-hairline"></div>
+      <a href="/membership" class="px-3 py-2.5 text-sm text-ink hover:bg-canvas rounded-md">Membership</a>
+      <a href="/events" class="px-3 py-2.5 text-sm text-ink hover:bg-canvas rounded-md">Events</a>
+      <a href="/bitcoin-brief" class="px-3 py-2.5 text-sm text-ink hover:bg-canvas rounded-md">Bitcoin Brief</a>
+      <a href="/contact" class="px-3 py-2.5 text-sm text-ink hover:bg-canvas rounded-md">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const siteHeader = document.getElementById('site-header');
+  if (siteHeader && siteHeader.getAttribute('data-transparent-home') === 'true') {
+    const syncHeaderBg = () => {
+      if (window.scrollY > 24) {
+        siteHeader.classList.remove('bg-transparent', 'border-transparent');
+        siteHeader.classList.add('bg-surface/95', 'backdrop-blur-sm', 'border-hairline');
+      } else {
+        siteHeader.classList.add('bg-transparent', 'border-transparent');
+        siteHeader.classList.remove('bg-surface/95', 'backdrop-blur-sm', 'border-hairline');
+      }
+    };
+    syncHeaderBg();
+    window.addEventListener('scroll', syncHeaderBg, { passive: true });
+  }
+
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const openIcon = document.getElementById('icon-menu-open');
+  const closeIcon = document.getElementById('icon-menu-close');
+
+  if (toggleBtn && drawer && openIcon && closeIcon) {
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+      drawer.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+  }
+
+  const dropdownBtn = document.getElementById('research-dropdown-btn');
+  const dropdownMenu = document.getElementById('research-dropdown-menu');
+  if (dropdownBtn && dropdownMenu) {
+    dropdownBtn.addEventListener('click', () => {
+      const expanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+      dropdownBtn.setAttribute('aria-expanded', String(!expanded));
+      dropdownMenu.classList.toggle('hidden');
+    });
+  }
+</script>

@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { bitcoinBriefArticles } from '../data/consortium';
+
+const categories = ['All', 'Federal Policy', 'Energy & Infrastructure', 'Monetary Policy', 'Trade Missions', 'Strategy'];
+---
+
+<BaseLayout
+  currentPath="/bitcoin-brief"
+  title="Bitcoin Brief | Canadian Bitcoin Consortium"
+  description="The BTC Brief: policy commentary, parliamentary testimony, and insights shaping the future of digital assets in Canada."
+>
+  <PageHeader
+    eyebrow="Bitcoin Brief"
+    title="The BTC Brief"
+    subtitle="Your trusted source for Canadian and North American policy developments, parliamentary consultations, and energy-compute insights."
+  />
+
+  <section class="bg-canvas py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div class="flex flex-wrap items-center gap-2 border-b border-hairline pb-6">
+        {categories.map((cat, idx) => (
+          <button
+            type="button"
+            data-brief-cat={cat}
+            class={`px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-md border whitespace-nowrap cursor-pointer transition-colors ${
+              idx === 0
+                ? 'bg-cobalt text-white border-cobalt'
+                : 'bg-surface text-charcoal border-hairline hover:text-cobalt'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div id="brief-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {bitcoinBriefArticles.map((art) => (
+          <article
+            data-category={art.category}
+            class="rounded-lg bg-surface border border-hairline overflow-hidden flex flex-col justify-between"
+          >
+            <div>
+              <div class="h-44 overflow-hidden border-b border-hairline">
+                <img src={art.image} alt={art.title} class="w-full h-full object-cover" />
+              </div>
+              <div class="p-6 space-y-3">
+                <div class="flex items-center gap-2 text-xs font-mono text-charcoal tabular-nums">
+                  <span>{art.category}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{art.date}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{art.readTime}</span>
+                </div>
+                <h2 class="font-display text-2xl font-bold text-cobalt leading-snug">{art.title}</h2>
+                <p class="text-sm text-charcoal leading-relaxed">{art.excerpt}</p>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-4 border-t border-hairline">
+              <button
+                type="button"
+                data-read-brief={art.id}
+                class="text-sm font-semibold text-cobalt hover:underline underline-offset-4 cursor-pointer"
+              >
+                Read Full Brief
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Article Reader Modal -->
+  <div
+    id="brief-reader-modal"
+    class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="brief-reader-title"
+  >
+    <div class="bg-surface border border-hairline rounded-lg max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-start justify-between gap-4 border-b border-hairline pb-4">
+        <div class="space-y-1">
+          <p id="brief-reader-meta" class="text-xs font-mono text-cobalt"></p>
+          <h3 id="brief-reader-title" class="font-display text-2xl sm:text-3xl font-bold text-cobalt"></h3>
+        </div>
+        <button
+          id="close-brief-reader"
+          type="button"
+          aria-label="Close article reader"
+          class="w-10 h-10 rounded-md border border-hairline flex items-center justify-center text-ink hover:bg-canvas cursor-pointer shrink-0"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="brief-reader-body" class="space-y-4 text-sm sm:text-base text-charcoal leading-relaxed"></div>
+      <div class="pt-4 border-t border-hairline flex items-center justify-between">
+        <a href="/contact" class="text-sm font-semibold text-cobalt hover:underline underline-offset-4">
+          Contact Policy Desk
+        </a>
+        <button
+          id="done-brief-reader"
+          type="button"
+          class="px-4 py-2 rounded-md bg-cobalt text-white text-xs font-semibold cursor-pointer"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script define:vars={{ bitcoinBriefArticles }}>
+  const catBtns = document.querySelectorAll('[data-brief-cat]');
+  const artCards = document.querySelectorAll('#brief-grid article');
+
+  catBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cat = btn.getAttribute('data-brief-cat');
+      catBtns.forEach((b) => {
+        const active = b.getAttribute('data-brief-cat') === cat;
+        if (active) {
+          b.classList.add('bg-cobalt', 'text-white', 'border-cobalt');
+          b.classList.remove('bg-surface', 'text-charcoal', 'border-hairline');
+        } else {
+          b.classList.remove('bg-cobalt', 'text-white', 'border-cobalt');
+          b.classList.add('bg-surface', 'text-charcoal', 'border-hairline');
+        }
+      });
+
+      artCards.forEach((c) => {
+        const cCat = c.getAttribute('data-category');
+        c.classList.toggle('hidden', cat !== 'All' && cCat !== cat);
+      });
+    });
+  });
+
+  const modal = document.getElementById('brief-reader-modal');
+  const titleEl = document.getElementById('brief-reader-title');
+  const metaEl = document.getElementById('brief-reader-meta');
+  const bodyEl = document.getElementById('brief-reader-body');
+  const closeBtn = document.getElementById('close-brief-reader');
+  const doneBtn = document.getElementById('done-brief-reader');
+
+  document.querySelectorAll('[data-read-brief]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-read-brief');
+      const article = bitcoinBriefArticles.find((a) => a.id === id);
+      if (!article || !modal) return;
+
+      if (titleEl) titleEl.textContent = article.title;
+      if (metaEl) metaEl.textContent = `${article.category} · ${article.date} · ${article.readTime}`;
+      if (bodyEl) {
+        bodyEl.innerHTML = '';
+        article.paragraphs.forEach((p) => {
+          const el = document.createElement('p');
+          el.textContent = p;
+          bodyEl.appendChild(el);
+        });
+      }
+      modal.classList.remove('hidden');
+    });
+  });
+
+  [closeBtn, doneBtn].forEach((b) => b?.addEventListener('click', () => modal?.classList.add('hidden')));
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.add('hidden');
+  });
+</script>

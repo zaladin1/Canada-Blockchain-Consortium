@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { industryResponses } from '../data/consortium';
+
+const years = ['All', '2025', '2024', '2023'];
+---
+
+<BaseLayout
+  currentPath="/industry-responses"
+  title="Industry Responses | Canadian Bitcoin Consortium"
+  description="Expert Perspectives: industry-driven responses to Canadian regulatory consultations and parliamentary policy developments."
+>
+  <PageHeader
+    eyebrow="Industry Responses"
+    title="Expert Perspectives"
+    subtitle="Thoughtful, collaborative submissions developed with leading Canadian companies and subject-matter experts so regulators receive clear, practical insights."
+  />
+
+  <section class="bg-canvas py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-hairline pb-6">
+        <p class="text-sm sm:text-base text-charcoal max-w-2xl">
+          Each submission highlights the opportunities and structural challenges facing Canada’s digital asset economy, from banking access and payment rails to energy policy.
+        </p>
+        <div class="inline-flex items-center gap-1 p-1 bg-surface rounded-lg border border-hairline self-start sm:self-auto" role="group" aria-label="Filter industry responses by year">
+          {years.map((year, idx) => (
+            <button
+              type="button"
+              data-resp-year={year}
+              class={`px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-md whitespace-nowrap cursor-pointer transition-colors ${
+                idx === 0 ? 'bg-cobalt text-white' : 'text-charcoal hover:text-cobalt'
+              }`}
+            >
+              {year}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div id="responses-list" class="space-y-6">
+        {industryResponses.map((item) => (
+          <article
+            data-year={item.year}
+            class="p-6 sm:p-8 rounded-lg bg-surface border border-hairline space-y-4"
+          >
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2 text-xs font-mono text-charcoal tabular-nums">
+                <span>{item.year}</span>
+                <span aria-hidden="true">·</span>
+                <span>{item.regulator}</span>
+              </div>
+              <a
+                href={`/contact?topic=${encodeURIComponent(item.title)}`}
+                class="text-xs font-semibold text-cobalt hover:underline underline-offset-4"
+              >
+                Request Submission Brief
+              </a>
+            </div>
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-cobalt">{item.title}</h2>
+            <p class="text-sm sm:text-base text-charcoal leading-relaxed max-w-4xl">{item.summary}</p>
+            <ul class="pt-2 space-y-1.5 text-sm text-ink list-disc pl-5">
+              {item.highlights.map((h) => (
+                <li>{h}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const filterBtns = document.querySelectorAll('[data-resp-year]');
+  const cards = document.querySelectorAll('#responses-list article');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selected = btn.getAttribute('data-resp-year');
+      filterBtns.forEach((b) => {
+        const active = b.getAttribute('data-resp-year') === selected;
+        if (active) {
+          b.classList.add('bg-cobalt', 'text-white');
+          b.classList.remove('text-charcoal');
+        } else {
+          b.classList.remove('bg-cobalt', 'text-white');
+          b.classList.add('text-charcoal');
+        }
+      });
+
+      cards.forEach((c) => {
+        const y = c.getAttribute('data-year');
+        c.classList.toggle('hidden', selected !== 'All' && y !== selected);
+      });
+    });
+  });
+</script>

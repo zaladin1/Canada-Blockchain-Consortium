@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import {
+  siteImages,
+  federalPriorities,
+  provincialPriorities,
+  researchPublications,
+} from '../data/consortium';
+
+const years = ['All', '2025', '2023', '2022'];
+---
+
+<BaseLayout
+  currentPath="/policies-research"
+  title="Policies & Research | Canadian Bitcoin Consortium"
+  description="Federal and provincial policy priorities, white papers, and technical research advancing Canada’s digital asset ecosystem."
+>
+  <PageHeader
+    eyebrow="Policies & Research"
+    title="Policy Priorities &amp; Research Archive"
+    subtitle="Comprising leaders from finance, technology, energy, and academia, our members shape evidence-based policy papers for Canadian regulators and lawmakers."
+  />
+
+  <!-- Federal & Provincial Overview -->
+  <section class="bg-surface py-16 border-b border-hairline">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-4 space-y-3">
+          <p class="text-xs font-mono text-cobalt font-medium">Federal Agenda</p>
+          <h2 class="font-display text-3xl font-bold text-cobalt">Federal Priorities</h2>
+          <p class="text-sm text-charcoal leading-relaxed">
+            Creating tax parity, institutional banking access, and clear federal coordination for Bitcoin businesses and everyday Canadians.
+          </p>
+        </div>
+        <div class="lg:col-span-8 divide-y divide-hairline border-y border-hairline">
+          {federalPriorities.map((item) => (
+            <div class="py-5 space-y-2">
+              <div class="flex items-baseline gap-3">
+                <span class="font-mono text-xs text-cobalt tabular-nums">{item.code}</span>
+                <h3 class="font-display text-xl font-bold text-cobalt">{item.title}</h3>
+              </div>
+              <p class="text-sm text-charcoal leading-relaxed">{item.summary}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-4 space-y-5">
+          <div class="space-y-3">
+            <p class="text-xs font-mono text-cobalt font-medium">Provincial Agenda</p>
+            <h2 class="font-display text-3xl font-bold text-cobalt">Provincial Priorities</h2>
+            <p class="text-sm text-charcoal leading-relaxed">
+              Reducing red tape, removing mining moratoriums, and treating flexible compute load as a catalyst for grid stability and rural jobs.
+            </p>
+          </div>
+          <div class="rounded-lg overflow-hidden border border-hairline aspect-video">
+            <img
+              src={siteImages.government}
+              alt="Canadian government and provincial regulatory coordination"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        <div class="lg:col-span-8 divide-y divide-hairline border-y border-hairline">
+          {provincialPriorities.map((item) => (
+            <div class="py-5 space-y-2">
+              <div class="flex items-baseline gap-3">
+                <span class="font-mono text-xs text-cobalt tabular-nums">{item.code}</span>
+                <h3 class="font-display text-xl font-bold text-cobalt">{item.title}</h3>
+              </div>
+              <p class="text-sm text-charcoal leading-relaxed">{item.summary}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filterable Research Library -->
+  <section class="py-16 lg:py-20 bg-canvas">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <p class="text-xs font-mono text-cobalt font-medium">Publications</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-cobalt">Research Library</h2>
+        </div>
+
+        <div class="inline-flex items-center gap-1 p-1 bg-surface rounded-lg border border-hairline self-start sm:self-auto" role="group" aria-label="Filter research by year">
+          {years.map((year, idx) => (
+            <button
+              type="button"
+              data-research-year={year}
+              class={`px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-md whitespace-nowrap cursor-pointer transition-colors ${
+                idx === 0 ? 'bg-cobalt text-white' : 'text-charcoal hover:text-cobalt'
+              }`}
+            >
+              {year}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div id="research-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {researchPublications.map((paper) => (
+          <article
+            id={paper.id}
+            data-year={paper.year}
+            class="rounded-lg bg-surface border border-hairline overflow-hidden flex flex-col justify-between"
+          >
+            <div>
+              <div class="h-48 overflow-hidden bg-canvas border-b border-hairline">
+                <img src={paper.image} alt={paper.title} class="w-full h-full object-cover" />
+              </div>
+              <div class="p-6 sm:p-8 space-y-3">
+                <div class="flex items-center gap-2 text-xs font-mono text-charcoal tabular-nums">
+                  <span>{paper.year}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{paper.category}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{paper.pages}</span>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-cobalt">{paper.title}</h3>
+                <p class="text-sm text-charcoal leading-relaxed">{paper.summary}</p>
+                <div class="pt-3 space-y-2">
+                  <p class="text-xs font-semibold text-ink">Key Findings</p>
+                  <ul class="space-y-1.5 text-sm text-charcoal list-disc pl-5">
+                    {paper.keyTakeaways.map((point) => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="px-6 sm:px-8 pb-6 pt-4 border-t border-hairline flex items-center justify-between">
+              <a
+                href={`/contact?topic=${encodeURIComponent(paper.title)}`}
+                class="text-sm font-semibold text-cobalt hover:underline underline-offset-4"
+              >
+                Request Full Briefing Copy
+              </a>
+              <a
+                href="/industry-responses"
+                class="text-xs font-semibold text-charcoal hover:text-cobalt"
+              >
+                Related Submissions
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const yearButtons = document.querySelectorAll('[data-research-year]');
+  const researchCards = document.querySelectorAll('#research-grid article');
+
+  yearButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selected = btn.getAttribute('data-research-year');
+      yearButtons.forEach((b) => {
+        const active = b.getAttribute('data-research-year') === selected;
+        if (active) {
+          b.classList.add('bg-cobalt', 'text-white');
+          b.classList.remove('text-charcoal');
+        } else {
+          b.classList.remove('bg-cobalt', 'text-white');
+          b.classList.add('text-charcoal');
+        }
+      });
+
+      researchCards.forEach((card) => {
+        const cardYear = card.getAttribute('data-year');
+        card.classList.toggle('hidden', selected !== 'All' && cardYear !== selected);
+      });
+    });
+  });
+</script>

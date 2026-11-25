@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout
+  currentPath="/terms-and-policy"
+  title="Terms & Policy | Canadian Bitcoin Consortium"
+  description="Privacy practices, newsletter governance, and terms of use for the Canadian Bitcoin Consortium."
+>
+  <PageHeader
+    eyebrow="Governance"
+    title="Terms &amp; Privacy Policy"
+    subtitle="How the Canadian Bitcoin Consortium handles member inquiries, event registrations, and Monthly Bitcoin Brief subscriptions."
+  />
+
+  <section class="bg-canvas py-16 lg:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-sm sm:text-base text-charcoal leading-relaxed">
+      <div class="p-6 sm:p-8 rounded-lg bg-surface border border-hairline space-y-4">
+        <h2 class="font-display text-2xl font-bold text-cobalt">1. Privacy &amp; Information Handling</h2>
+        <p>
+          We respect your privacy. Email addresses submitted for the Monthly Bitcoin Brief, membership inquiries, or event invitations are used solely to deliver Consortium updates, research releases, and requested correspondence. We never sell or rent subscriber lists to third parties.
+        </p>
+        <h2 class="font-display text-2xl font-bold text-cobalt pt-4">2. Educational &amp; Policy Content</h2>
+        <p>
+          Research papers, regulatory consultation responses, and commentary published by the Canadian Bitcoin Consortium are provided for public policy education and informational purposes and do not constitute investment, legal, or tax advice.
+        </p>
+        <h2 class="font-display text-2xl font-bold text-cobalt pt-4">3. Contact &amp; Updates</h2>
+        <p>
+          For privacy requests or corrections, contact <a href="mailto:info@mybtccanada.ca" class="text-cobalt font-semibold underline">info@mybtccanada.ca</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

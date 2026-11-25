@@ -1,0 +1,29 @@
+---
+import { siteImages } from '../data/consortium';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+}
+
+const { eyebrow, title, subtitle } = Astro.props;
+---
+
+<section class="relative bg-canvas py-16 sm:py-24 border-b border-hairline overflow-hidden">
+  <img
+    src={siteImages.clouds}
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-55 pointer-events-none"
+  />
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+    <p class="text-xs font-mono text-charcoal/80 uppercase tracking-widest">{eyebrow}</p>
+    <h1 class="font-display text-4xl sm:text-6xl font-bold tracking-tight text-cobalt uppercase">
+      {title}
+    </h1>
+    <p class="text-base sm:text-lg text-charcoal max-w-2xl mx-auto leading-relaxed">
+      {subtitle}
+    </p>
+  </div>
+</section>
