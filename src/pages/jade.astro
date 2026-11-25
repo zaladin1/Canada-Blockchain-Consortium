@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteImages } from '../data/consortium';
+---
+
+<BaseLayout
+  currentPath="/jade"
+  title="Jade Alberts | Canadian Bitcoin Consortium"
+  description="Jade Alberts — Vice President of the Canadian Bitcoin Consortium."
+>
+  <section class="relative bg-canvas py-16 sm:py-24 border-b border-hairline overflow-hidden">
+    <img
+      src={siteImages.clouds}
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover opacity-55 pointer-events-none"
+    />
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="font-display text-5xl sm:text-6xl font-normal text-cobalt tracking-[-0.02em]">
+        Jade Alberts
+      </h1>
+    </div>
+  </section>
+
+  <section class="bg-surface text-ink py-16 lg:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+        <div class="md:col-span-5">
+          <img
+            src="/images/cbc/jade.png"
+            alt="Jade Alberts"
+            class="w-full aspect-square object-cover object-top"
+          />
+        </div>
+
+        <div class="md:col-span-7 space-y-5 text-base text-charcoal leading-relaxed">
+          <p>
+            Jade is a serial entrepreneur with a proven track record of success, having led four ventures to successful exits. As the founder of Peer Guidance - Purpose Before Profit is a fractional business team that has collectively achieved nine exits. Specializing in scale, growth, and people, Peer Guidance empowers entrepreneurs with the support and expertise they need to thrive. Their mantra, #YoureNotAlone, reflects their commitment to fostering collaboration and resilience in the business world. He is an advisor/mentor at Innovate Calgary (University of Calgary), helping Academia commercialize their ideas, and SVG Thrive supports innovative agricultural ventures.
+          </p>
+          <p>
+            An active angel investor, Jade has made over 30 investments across sectors such as Cleantech, Life Sciences, Agtech, and industry-agnostic technology. As the Vice President of the Canadian Bitcoin Consortium, he plays a pivotal role in uniting and educating Canada’s blockchain industry. He collaborates with provincial and federal governments and regulators to shape policies and regulations for the consortium’s more than 55 member companies, ensuring Canada remains at the forefront of blockchain innovation.
+          </p>
+          <p>
+            A sought-after speaker, Jade is a regular at industry events across Canada, where he shares insights on startups, entrepreneurship, investing, digital assets, and mental health. His expertise and authentic approach have made him a trusted voice in the entrepreneurial community. He hosts the highly popular weekly Live Show Telling It Like It Is, which has garnered over 7 million views. These candid conversations allow entrepreneurs to share their story and entrepreneurial journey. He started Founders Coffee, a community initiative that connects like-minded entrepreneurs, fostering meaningful relationships and collaboration. A Mental Health advocate who shares his struggles and makes himself available to support others during difficult times during their entrepreneurial journey.
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-hairline flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="/koleya"
+          class="inline-flex items-center justify-center min-h-12 px-6 py-3 rounded-[10px] bg-cobalt hover:bg-cobalt-dark text-white text-base font-normal transition-colors"
+        >
+          View Koleya
+        </a>
+        <a
+          href="/sara"
+          class="inline-flex items-center justify-center min-h-12 px-6 py-3 rounded-[10px] bg-cobalt hover:bg-cobalt-dark text-white text-base font-normal transition-colors"
+        >
+          View Sara
+        </a>
+        <a
+          href="/"
+          class="inline-flex items-center justify-center min-h-12 px-6 py-3 rounded-[10px] border border-cobalt text-cobalt hover:bg-cobalt hover:text-white text-base font-normal transition-colors"
+        >
+          HOME
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteImages } from '../data/consortium';
+---
+
+<BaseLayout
+  currentPath="/koleya"
+  title="Koleya Karringten | Canadian Bitcoin Consortium"
+  description="Koleya Karringten — Executive Director of the Canadian Bitcoin Consortium."
+>
+  <section class="relative bg-canvas py-16 sm:py-24 border-b border-hairline overflow-hidden">
+    <img
+      src={siteImages.clouds}
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover opacity-55 pointer-events-none"
+    />
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="font-display text-5xl sm:text-6xl font-normal text-cobalt tracking-[-0.02em]">
+        Koleya Karringten
+      </h1>
+    </div>
+  </section>
+
+  <section class="bg-surface text-ink py-16 lg:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+        <div class="md:col-span-5">
+          <img
+            src="/images/cbc/koleya.png"
+            alt="Koleya Karringten"
+            class="w-full aspect-square object-cover object-top"
+          />
+        </div>
+
+        <div class="md:col-span-7 space-y-5 text-base text-charcoal leading-relaxed">
+          <p>
+            Koleya Karringten has spent more than two decades working in emerging technologies, and today she works where innovation meets public policy. As Executive Director of the Canadian Bitcoin Consortium, she brings policymakers, regulators and industry leaders together to make Canada a global leader in Bitcoin, digital infrastructure and responsible innovation.
+          </p>
+          <p>
+            She believes Bitcoin should be a practical policy question rather than a political wedge: how Canada turns its energy into compute, how digital-asset businesses are regulated fairly, and how everyday Canadians can take part safely. That focus on legitimacy led her to found Warden Insurance, a licensed, member-owned insurer built for digital-asset businesses.
+          </p>
+          <p>
+            Koleya serves on Alberta&apos;s Women&apos;s Economic Advisory Council, the board of Alberta iGaming, and as an independent director of Balance Trust Company. She has received the King Charles III Coronation Medal, the Queen Elizabeth II Platinum Jubilee Medal, and a Woman of Vision Award.
+          </p>
+          <p class="pt-1">
+            <a
+              href="http://koleya.ca"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-cobalt underline underline-offset-4 hover:text-cobalt-dark"
+            >
+              koleya.ca
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-hairline flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="/sara"
+          class="inline-flex items-center justify-center min-h-12 px-6 py-3 rounded-[10px] bg-cobalt hover:bg-cobalt-dark text-white text-base font-normal transition-colors"
+        >
+          View Sara
+        </a>
+        <a
+          href="/jade"
+          class="inline-flex items-center justify-center min-h-12 px-6 py-3 rounded-[10px] bg-cobalt hover:bg-cobalt-dark text-white text-base font-normal transition-colors"
+        >
+          View Jade
+        </a>
+        <a
+          href="/"
+          class="inline-flex items-center justify-center min-h-12 px-6 py-3 rounded-[10px] border border-cobalt text-cobalt hover:bg-cobalt hover:text-white text-base font-normal transition-colors"
+        >
+          HOME
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

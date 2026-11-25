@@ -192,10 +192,24 @@ const isHome = currentPath === '/';
   const dropdownBtn = document.getElementById('research-dropdown-btn');
   const dropdownMenu = document.getElementById('research-dropdown-menu');
   if (dropdownBtn && dropdownMenu) {
-    dropdownBtn.addEventListener('click', () => {
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       const expanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
       dropdownBtn.setAttribute('aria-expanded', String(!expanded));
-      dropdownMenu.classList.toggle('hidden');
+      dropdownMenu.classList.toggle('hidden', expanded);
+    });
+    document.addEventListener('click', (e) => {
+      const target = e.target as Node | null;
+      if (target && !dropdownMenu.contains(target) && !dropdownBtn.contains(target)) {
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+        dropdownMenu.classList.add('hidden');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+        dropdownMenu.classList.add('hidden');
+      }
     });
   }
 </script>

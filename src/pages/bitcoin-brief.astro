@@ -53,7 +53,7 @@ const categories = ['All', 'Federal Policy', 'Energy & Infrastructure', 'Monetar
                   <span aria-hidden="true">·</span>
                   <span>{art.readTime}</span>
                 </div>
-                <h2 class="font-display text-2xl font-bold text-cobalt leading-snug">{art.title}</h2>
+                <h2 class="font-display text-2xl font-normal text-cobalt leading-snug">{art.title}</h2>
                 <p class="text-sm text-charcoal leading-relaxed">{art.excerpt}</p>
               </div>
             </div>
@@ -84,7 +84,7 @@ const categories = ['All', 'Federal Policy', 'Energy & Infrastructure', 'Monetar
       <div class="flex items-start justify-between gap-4 border-b border-hairline pb-4">
         <div class="space-y-1">
           <p id="brief-reader-meta" class="text-xs font-mono text-cobalt"></p>
-          <h3 id="brief-reader-title" class="font-display text-2xl sm:text-3xl font-bold text-cobalt"></h3>
+          <h3 id="brief-reader-title" class="font-display text-2xl sm:text-3xl font-normal text-cobalt"></h3>
         </div>
         <button
           id="close-brief-reader"
@@ -112,9 +112,26 @@ const categories = ['All', 'Federal Policy', 'Energy & Infrastructure', 'Monetar
       </div>
     </div>
   </div>
+  <script
+    type="application/json"
+    id="brief-articles-data"
+    set:html={JSON.stringify(bitcoinBriefArticles)}
+  ></script>
 </BaseLayout>
 
-<script define:vars={{ bitcoinBriefArticles }}>
+<script>
+  interface BriefArticleItem {
+    id: string;
+    date: string;
+    readTime: string;
+    category: string;
+    title: string;
+    paragraphs: string[];
+  }
+
+  const dataEl = document.getElementById('brief-articles-data');
+  const articles: BriefArticleItem[] = dataEl?.textContent ? JSON.parse(dataEl.textContent) : [];
+
   const catBtns = document.querySelectorAll('[data-brief-cat]');
   const artCards = document.querySelectorAll('#brief-grid article');
 
@@ -149,7 +166,7 @@ const categories = ['All', 'Federal Policy', 'Energy & Infrastructure', 'Monetar
   document.querySelectorAll('[data-read-brief]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const id = btn.getAttribute('data-read-brief');
-      const article = bitcoinBriefArticles.find((a) => a.id === id);
+      const article = articles.find((a) => a.id === id);
       if (!article || !modal) return;
 
       if (titleEl) titleEl.textContent = article.title;

@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteImages } from '../data/consortium';
+---
+
+<BaseLayout
+  currentPath="/sara"
+  title="Sara Ishaq-Raad | Canadian Bitcoin Consortium"
+  description="Sara Ishaq-Raad — Director of Operations at the Canadian Bitcoin Consortium."
+>
+  <section class="relative bg-canvas py-16 sm:py-24 border-b border-hairline overflow-hidden">
+    <img
+      src={siteImages.clouds}
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover opacity-55 pointer-events-none"
+    />
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="font-display text-5xl sm:text-6xl font-normal text-cobalt tracking-[-0.02em]">
+        Sara Ishaq-Raad
+      </h1>
+    </div>
+  </section>
+
+  <section class="bg-surface text-ink py-16 lg:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+        <div class="md:col-span-5">
+          <img
+            src="/images/cbc/sara.jpg"
+            alt="Sara Ishaq-Raad"
+            class="w-full aspect-square object-cover object-top"
+          />
+        </div>
+
+        <div class="md:col-span-7 space-y-5 text-base text-charcoal leading-relaxed">
+          <p>
+            Sara Ishaq-Raad is the Director of Operations at the Canadian Bitcoin Consortium, where she keeps the organization&apos;s daily work running smoothly and supports the team as it advances sound monetary and energy policy for Canadians.
+          </p>
+          <p>
+            She plans and delivers the Consortium&apos;s events, from summits and roundtables to Hill Day and trade missions, so policymakers, regulators and industry leaders have a clear place to meet and work through the issues that matter to members. She also manages member relations and onboarding, helping new and existing members feel connected and well looked after.
+          </p>
+          <p>
+            Sara coordinates with partners and the wider team so convening, policy work and community programs stay organized, on time and welcoming. Her focus is on the practical details that let the Consortium show up well for its members and for Canada.
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-hairline flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="/koleya"
+          class="inline-flex items-center justify-center min-h-12 px-6 py-3 rounded-[10px] bg-cobalt hover:bg-cobalt-dark text-white text-base font-normal transition-colors"
+        >
+          View Koleya
+        </a>
+        <a
+          href="/jade"
+          class="inline-flex items-center justify-center min-h-12 px-6 py-3 rounded-[10px] bg-cobalt hover:bg-cobalt-dark text-white text-base font-normal transition-colors"
+        >
+          View Jade
+        </a>
+        <a
+          href="/"
+          class="inline-flex items-center justify-center min-h-12 px-6 py-3 rounded-[10px] border border-cobalt text-cobalt hover:bg-cobalt hover:text-white text-base font-normal transition-colors"
+        >
+          HOME
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

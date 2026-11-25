@@ -1,14 +1,27 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import membersMap from '../data/members-map.json';
 import { siteImages } from '../data/consortium';
 
+const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp', '.svg', '.avif', '.gif']);
+
+function getMemberLogos(folder: string): string[] {
+  const dirPath = path.join(process.cwd(), 'public', 'images', 'members', folder);
+  if (!fs.existsSync(dirPath)) return [];
+  return fs
+    .readdirSync(dirPath, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && !entry.name.startsWith('.') && IMAGE_EXTENSIONS.has(path.extname(entry.name).toLowerCase()))
+    .map((entry) => entry.name)
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+}
+
 const tierSections = [
-  { title: 'DIAMOND', key: 'DIAMOND', cols: 'grid-cols-2 sm:grid-cols-4' },
-  { title: 'PLATINUM', key: 'PLATINUM', cols: 'grid-cols-2 sm:grid-cols-4 lg:grid-cols-5' },
-  { title: 'GOLD', key: 'GOLD', cols: 'grid-cols-2 sm:grid-cols-4 lg:grid-cols-5' },
-  { title: 'SILVER', key: 'SILVER', cols: 'grid-cols-2 sm:grid-cols-5' },
-  { title: 'BRONZE & COMMUNITY PARTNERS', key: 'BRONZE & COMMUNITY PARTNERS', cols: 'grid-cols-2 sm:grid-cols-4 lg:grid-cols-5' },
+  { title: 'DIAMOND', folder: 'diamond', cols: 'grid-cols-2 sm:grid-cols-4' },
+  { title: 'PLATINUM', folder: 'platinum', cols: 'grid-cols-2 sm:grid-cols-4 lg:grid-cols-5' },
+  { title: 'GOLD', folder: 'gold', cols: 'grid-cols-2 sm:grid-cols-4 lg:grid-cols-5' },
+  { title: 'SILVER', folder: 'silver', cols: 'grid-cols-2 sm:grid-cols-5' },
+  { title: 'BRONZE & COMMUNITY PARTNERS', folder: 'bronze', cols: 'grid-cols-2 sm:grid-cols-4 lg:grid-cols-5' },
 ] as const;
 
 const exactPackages = [
@@ -104,7 +117,7 @@ const baseBenefits = [
       class="absolute inset-0 w-full h-full object-cover opacity-55 pointer-events-none"
     />
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="font-display text-5xl sm:text-6xl font-bold tracking-tight text-cobalt uppercase">
+      <h1 class="font-display text-5xl sm:text-6xl font-normal tracking-tight text-cobalt uppercase">
         MEMBERSHIP
       </h1>
     </div>
@@ -114,24 +127,24 @@ const baseBenefits = [
   <section class="bg-surface py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       <div class="text-center space-y-3">
-        <h2 class="font-display text-4xl sm:text-5xl font-bold text-cobalt">
+        <h2 class="font-display text-4xl sm:text-5xl font-normal text-cobalt">
           Our Community
         </h2>
       </div>
 
       {tierSections.map((tier) => {
-        const logos = membersMap[tier.key as keyof typeof membersMap] || [];
+        const logos = getMemberLogos(tier.folder);
         return (
           <div class="space-y-8 pt-6 border-t border-hairline first:border-t-0 first:pt-0">
-            <h3 class="font-display text-2xl sm:text-3xl font-bold text-cobalt text-center tracking-wide uppercase">
+            <h3 class="font-display text-2xl sm:text-3xl font-normal text-cobalt text-center tracking-wide uppercase">
               {tier.title}
             </h3>
 
             <div class={`grid ${tier.cols} gap-6 items-center justify-items-center`}>
-              {logos.map((logo, idx) => (
+              {logos.map((file, idx) => (
                 <div class="w-full h-28 sm:h-32 p-4 bg-white border border-hairline/60 flex items-center justify-center">
                   <img
-                    src={`/images/members/${logo.file}`}
+                    src={`/images/members/${tier.folder}/${file}`}
                     alt={`${tier.title} Member ${idx + 1}`}
                     loading="lazy"
                     class="max-h-20 sm:max-h-24 max-w-full w-auto object-contain"
@@ -144,8 +157,16 @@ const baseBenefits = [
       })}
 
       <div class="pt-8 border-t border-hairline text-center space-y-3">
-        <p class="font-display text-xl sm:text-2xl font-bold text-cobalt">
-          Want to discuss this with your Team? Download our Membership Brochure.
+        <p class="font-display text-xl sm:text-2xl font-normal text-cobalt">
+          Want to discuss this with your Team?{' '}
+          <a
+            href="/docs/2025_CBC_About_Us_Brochure_WEB_R.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline underline-offset-4 hover:text-cobalt-dark"
+          >
+            Download our Membership Brochure.
+          </a>
         </p>
         <p class="text-xs text-charcoal">(View downloaded PDF for proper formatting)</p>
       </div>
@@ -156,7 +177,7 @@ const baseBenefits = [
   <section class="bg-cobalt text-white py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       <div class="max-w-4xl space-y-4">
-        <h2 class="font-display text-4xl sm:text-5xl font-bold text-white">
+        <h2 class="font-display text-4xl sm:text-5xl font-normal text-white">
           Become a Member
         </h2>
         <p class="text-base sm:text-lg text-white/95 leading-relaxed">
@@ -171,7 +192,7 @@ const baseBenefits = [
         {exactPackages.map((pkg) => (
           <article class="p-6 sm:p-7 bg-white/10 border border-white/25 flex flex-col justify-between space-y-6">
             <div class="space-y-4">
-              <h3 class="font-display text-2xl sm:text-3xl font-bold text-white border-b border-white/20 pb-3">
+              <h3 class="font-display text-2xl sm:text-3xl font-normal text-white border-b border-white/20 pb-3">
                 {pkg.name}
               </h3>
               {pkg.subtitle && (
@@ -186,7 +207,7 @@ const baseBenefits = [
             <a
               href="#apply"
               data-select-tier={pkg.name}
-              class="inline-flex items-center justify-center min-h-11 px-4 py-2.5 bg-white text-cobalt hover:bg-canvas text-sm font-semibold whitespace-nowrap transition-colors"
+              class="inline-flex items-center justify-center min-h-11 px-4 py-2.5 rounded-[10px] bg-white text-cobalt hover:bg-canvas text-base font-normal whitespace-nowrap transition-colors"
             >
               Inquire About {pkg.name}
             </a>
@@ -196,7 +217,7 @@ const baseBenefits = [
         <!-- Base Level Benefits -->
         <article class="p-6 sm:p-7 bg-white text-ink border border-white flex flex-col justify-between space-y-6">
           <div class="space-y-4">
-            <h3 class="font-display text-2xl sm:text-3xl font-bold text-cobalt border-b border-hairline pb-3">
+            <h3 class="font-display text-2xl sm:text-3xl font-normal text-cobalt border-b border-hairline pb-3">
               Base
             </h3>
             <p class="text-xs font-semibold text-charcoal">
@@ -210,7 +231,7 @@ const baseBenefits = [
           </div>
           <a
             href="#apply"
-            class="inline-flex items-center justify-center min-h-11 px-4 py-2.5 bg-cobalt text-white hover:bg-cobalt-dark text-sm font-semibold whitespace-nowrap transition-colors"
+            class="inline-flex items-center justify-center min-h-11 px-4 py-2.5 rounded-[10px] bg-cobalt text-white hover:bg-cobalt-dark text-base font-normal whitespace-nowrap transition-colors"
           >
             Apply Now
           </a>
@@ -223,7 +244,7 @@ const baseBenefits = [
   <section id="apply" class="bg-canvas py-16 lg:py-20">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       <div class="text-center space-y-3">
-        <h2 class="font-display text-3xl sm:text-4xl font-bold text-cobalt">
+        <h2 class="font-display text-3xl sm:text-4xl font-normal text-cobalt">
           Join the Consortium
         </h2>
         <p class="text-base text-charcoal">

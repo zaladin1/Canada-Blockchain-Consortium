@@ -26,8 +26,11 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, .font-display {
+  h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
     text-wrap: balance;
   }
 

@@ -14,19 +14,18 @@ import {
   title="Canadian Bitcoin Consortium | An Advocacy Group dedicated to sound monetary and energy policy for the betterment of all Canadians."
   description="Advocating for sound monetary policy, industry growth, and regulatory engagement in Canada’s digital asset ecosystem."
 >
-  <!-- SEC 1 [light-bold]: Full-bleed TESTC.jpg Hero (bright light-grey left canvas + blue maple leaf & gold bitcoins on right) -->
-  <section class="relative min-h-[600px] lg:min-h-[700px] flex items-center bg-[#ededee] overflow-hidden border-b border-hairline">
+  <!-- SEC 1 [light-bold]: Full-bleed TESTC.jpg Hero -->
+  <section class="relative min-h-[600px] lg:min-h-[700px] flex items-center bg-[#ededee] overflow-hidden">
     <img
       src={siteImages.heroBg}
       alt="Canadian Bitcoin Consortium"
       class="absolute inset-0 w-full h-full object-cover object-[65%_45%]"
     />
-    <!-- Subtle light gradient only on narrow screens so text remains legible over the maple leaf -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[#ededee]/90 via-[#ededee]/45 to-transparent lg:from-[#ededee]/30 lg:via-transparent lg:to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#ededee]/90 via-[#ededee]/45 to-transparent lg:from-[#ededee]/25 lg:via-transparent lg:to-transparent"></div>
 
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 lg:pt-44 lg:pb-28 w-full">
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-24 lg:pt-44 lg:pb-32 w-full">
       <div class="max-w-2xl space-y-8">
-        <h1 class="font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.08] tracking-tight text-cobalt">
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-normal leading-[1.15] tracking-[-0.02em] text-cobalt">
           An Advocacy Group dedicated to sound monetary and energy policy for the betterment of all Canadians.
         </h1>
 
@@ -35,7 +34,7 @@ import {
           <input
             id="hero-search-input"
             type="search"
-            placeholder="Search policies, research, events..."
+            placeholder="Search"
             class="flex-1 min-h-11 px-4 py-2 text-sm text-ink bg-transparent placeholder:text-charcoal/60 focus:outline-none"
           />
           <button
@@ -51,57 +50,72 @@ import {
         <div id="hero-search-results" class="hidden max-w-md bg-white border border-hairline p-4 space-y-2 text-sm shadow-sm"></div>
       </div>
     </div>
+
+    <!-- Subtle curved bottom transition into Cobalt Blue section -->
+    <svg
+      class="absolute bottom-0 left-0 w-full h-7 sm:h-10 text-cobalt pointer-events-none"
+      viewBox="0 0 1440 48"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path fill="currentColor" d="M0,48 L0,36 C360,6 1080,6 1440,36 L1440,48 Z" />
+    </svg>
   </section>
 
   <!-- SEC 2 [bright]: Cobalt Blue #4153B6 Statement Banner -->
   <section class="bg-cobalt text-white py-16 lg:py-24">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-display text-2xl sm:text-4xl lg:text-[2.65rem] font-bold leading-snug text-white">
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-[2.65rem] font-normal leading-[1.2] tracking-[-0.02em] text-white">
         We convene policymakers, industry leaders, and regulators to enhance Canada’s global leadership in Bitcoin through common-sense policies in finance and energy.
       </h2>
     </div>
   </section>
 
-  <!-- SEC 3 [white-bold]: What we do (Left intro + CTA, Right 6-item Accordion) -->
-  <section class="bg-surface text-ink py-16 lg:py-24">
+  <!-- SEC 3 [white-bold]: What we do (Left intro + Outline Brochure Button, Right 6-item Accordion) -->
+  <section class="relative bg-surface text-ink pt-16 pb-24 lg:pt-24 lg:pb-32">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-      <div class="lg:col-span-5 space-y-5">
-        <h2 class="font-display text-4xl sm:text-5xl font-bold text-cobalt">
+      <div class="lg:col-span-5 space-y-6">
+        <h2 class="font-display text-4xl sm:text-5xl font-normal tracking-[-0.02em] text-cobalt">
           What we do
         </h2>
-        <p class="text-base text-charcoal leading-relaxed">
+        <p class="text-base text-charcoal leading-[1.6]">
           The Canadian Bitcoin Consortium is dedicated to advancing sound monetary and energy policies that drive business growth, create mortgage-paying jobs, and strengthen Canada’s competitive position for Bitcoin on the global stage.
         </p>
         <div class="pt-2">
-          <button
-            id="open-brochure-modal"
-            type="button"
-            class="inline-flex items-center justify-center min-h-12 px-6 py-3 bg-cobalt hover:bg-cobalt-dark text-white text-sm font-semibold whitespace-nowrap transition-colors cursor-pointer"
+          <a
+            href="/docs/2025_CBC_About_Us_Brochure_WEB_R.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center min-h-12 px-6 py-4 rounded-[10px] border border-cobalt text-cobalt hover:bg-cobalt hover:text-white text-base font-normal leading-[1.2] whitespace-nowrap transition-colors"
           >
-            Download our “About us” Brochure
-          </button>
+            Download our &ldquo;About us&rdquo; Brochure
+          </a>
         </div>
       </div>
 
-      <div class="lg:col-span-7 divide-y divide-hairline border-y border-hairline">
+      <div class="lg:col-span-7 divide-y divide-cobalt/35 border-y border-cobalt/35">
         {whatWeDoPillars.map((pillar, idx) => (
           <div class="accordion-item">
             <button
               type="button"
               data-acc-toggle={`what-${idx}`}
-              aria-expanded={idx === 0 ? 'true' : 'false'}
-              class="w-full py-5 flex items-center justify-between gap-4 text-left cursor-pointer group"
+              aria-expanded="false"
+              aria-controls={`what-${idx}`}
+              class="w-full py-7 flex items-center justify-between gap-6 text-left cursor-pointer group"
             >
-              <span class="font-display text-xl sm:text-2xl font-bold text-cobalt group-hover:text-cobalt-dark">
+              <span class="font-display text-xl sm:text-2xl font-normal tracking-[-0.02em] text-cobalt group-hover:text-cobalt-dark transition-colors">
                 {pillar.title}
               </span>
-              <span class="text-cobalt text-2xl leading-none font-light shrink-0" data-acc-icon>
-                {idx === 0 ? '−' : '+'}
+              <span class="text-cobalt shrink-0 inline-flex items-center justify-center w-6 h-6" aria-hidden="true">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <line x1="12" y1="5" x2="12" y2="19" data-acc-plus />
+                </svg>
               </span>
             </button>
             <div
               id={`what-${idx}`}
-              class={`pb-5 text-sm sm:text-base text-charcoal leading-relaxed ${idx === 0 ? '' : 'hidden'}`}
+              class="hidden pb-7 max-w-[78%] text-sm sm:text-base text-charcoal leading-[1.6]"
             >
               {pillar.detail}
             </div>
@@ -109,48 +123,69 @@ import {
         ))}
       </div>
     </div>
+
+    <!-- Subtle asymmetric curve into SEC 4 Cobalt section matching screenshot -->
+    <svg
+      class="absolute bottom-0 left-0 w-full h-7 sm:h-10 text-cobalt pointer-events-none"
+      viewBox="0 0 1440 48"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path fill="currentColor" d="M0,48 L0,28 C420,-4 960,42 1440,12 L1440,48 Z" />
+    </svg>
   </section>
 
-  <!-- SEC 4 [bright]: Trusted Research. Informed Advocacy. (Left text + 3 stacked white buttons, Right CHAOS to CLARITY.png) -->
-  <section class="bg-cobalt text-white py-16 lg:py-24">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+  <!-- SEC 4 [bright]: Trusted Research. Informed Advocacy. (Exact match to screenshot with 3 tertiary underline links + CHAOS to CLARITY.png) -->
+  <section class="relative bg-cobalt text-white pt-16 pb-24 lg:pt-24 lg:pb-32">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       <div class="lg:col-span-5 space-y-6">
-        <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
-          Trusted Research. Informed Advocacy.
+        <h2 class="font-display text-4xl sm:text-[3.1rem] font-normal leading-[1.12] tracking-[-0.02em] text-white">
+          Trusted Research.<br />Informed Advocacy.
         </h2>
-        <p class="text-base sm:text-lg text-white/90 leading-relaxed">
+        <p class="text-base sm:text-lg text-white/95 leading-[1.55]">
           From white papers to regulatory engagement, we provide the insights and leadership the industry needs.
         </p>
-        <div class="flex flex-col items-start gap-3 pt-2">
+
+        <!-- Exact Squarespace Tertiary Underline Buttons -->
+        <div class="flex flex-col items-start gap-2 pt-3">
           <a
             href="/policies-research"
-            class="inline-flex items-center justify-center min-w-[230px] min-h-12 px-6 py-3 bg-white text-cobalt hover:bg-canvas text-sm font-semibold whitespace-nowrap transition-colors"
+            class="w-[235px] py-4 px-5 text-center text-white text-base font-normal leading-[1.2] border-b-2 border-white hover:opacity-75 transition-opacity whitespace-nowrap"
           >
             View White Papers
           </a>
           <a
             href="/reports"
-            class="inline-flex items-center justify-center min-w-[230px] min-h-12 px-6 py-3 bg-white text-cobalt hover:bg-canvas text-sm font-semibold whitespace-nowrap transition-colors"
+            class="w-[235px] py-4 px-5 text-center text-white text-base font-normal leading-[1.2] border-b-2 border-white hover:opacity-75 transition-opacity whitespace-nowrap"
           >
             View Quarterly Reports
           </a>
           <a
             href="/industry-responses"
-            class="inline-flex items-center justify-center min-w-[230px] min-h-12 px-6 py-3 bg-white text-cobalt hover:bg-canvas text-sm font-semibold whitespace-nowrap transition-colors"
+            class="w-[235px] py-4 px-5 text-center text-white text-base font-normal leading-[1.2] border-b-2 border-white hover:opacity-75 transition-opacity whitespace-nowrap"
           >
             View Industry responses
           </a>
         </div>
       </div>
 
-      <div class="lg:col-span-7">
+      <div class="lg:col-span-7 flex justify-center lg:justify-end">
         <img
           src={siteImages.chaosToClarity}
-          alt="From Chaos to Clarity — Canadian Bitcoin Consortium White Paper"
-          class="w-full h-auto object-contain"
+          alt="From Chaos to Clarity — Canada's Blueprint for a Trusted and Competitive Digital Future"
+          class="w-full max-w-[540px] h-auto object-contain"
         />
       </div>
     </div>
+
+    <svg
+      class="absolute bottom-0 left-0 w-full h-7 sm:h-10 text-surface pointer-events-none"
+      viewBox="0 0 1440 48"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path fill="currentColor" d="M0,48 L0,18 C480,46 960,0 1440,28 L1440,48 Z" />
+    </svg>
   </section>
 
   <!-- SEC 5 [white-bold]: Policy Priorities (Top GOVERNEMNT.jpg banner, Bottom-left intro, Bottom-right 2-item Accordion) -->
@@ -166,33 +201,39 @@ import {
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         <div class="lg:col-span-5 space-y-4">
-          <h2 class="font-display text-4xl sm:text-5xl font-bold text-cobalt">
+          <h2 class="font-display text-4xl sm:text-5xl font-normal tracking-[-0.02em] text-cobalt">
             Policy Priorities
           </h2>
-          <p class="text-base text-charcoal leading-relaxed">
+          <p class="text-base text-charcoal leading-[1.6]">
             The Canadian Bitcoin Consortium is committed to advancing policy that positions Canada as a global leader in Bitcoin adoption, financial innovation, and responsible energy development. Our priorities focus on creating a clear, supportive framework both federally and provincially.
           </p>
         </div>
 
-        <div class="lg:col-span-7 divide-y divide-hairline border-y border-hairline">
+        <div class="lg:col-span-7 divide-y divide-cobalt/35 border-y border-cobalt/35">
           <!-- Accordion 1: Federal Priorities -->
           <div class="accordion-item">
             <button
               type="button"
               data-acc-toggle="priority-federal"
-              aria-expanded="true"
-              class="w-full py-5 flex items-center justify-between gap-4 text-left cursor-pointer group"
+              aria-expanded="false"
+              aria-controls="priority-federal"
+              class="w-full py-7 flex items-center justify-between gap-6 text-left cursor-pointer group"
             >
-              <span class="font-display text-2xl font-bold text-cobalt group-hover:text-cobalt-dark">
+              <span class="font-display text-2xl font-normal tracking-[-0.02em] text-cobalt group-hover:text-cobalt-dark transition-colors">
                 Federal Priorities
               </span>
-              <span class="text-cobalt text-2xl leading-none font-light shrink-0" data-acc-icon>−</span>
+              <span class="text-cobalt shrink-0 inline-flex items-center justify-center w-6 h-6" aria-hidden="true">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <line x1="12" y1="5" x2="12" y2="19" data-acc-plus />
+                </svg>
+              </span>
             </button>
-            <div id="priority-federal" class="pb-6 space-y-5">
+            <div id="priority-federal" class="hidden pb-7 space-y-6">
               {federalPriorities.map((item) => (
-                <div class="space-y-1">
-                  <h3 class="font-display text-lg font-bold text-ink">{item.title}</h3>
-                  <p class="text-sm text-charcoal leading-relaxed">{item.summary}</p>
+                <div class="space-y-1.5">
+                  <h3 class="font-display text-xl font-normal tracking-[-0.02em] text-cobalt">{item.title}</h3>
+                  <p class="text-sm sm:text-base text-charcoal leading-[1.6]">{item.summary}</p>
                 </div>
               ))}
             </div>
@@ -204,18 +245,24 @@ import {
               type="button"
               data-acc-toggle="priority-provincial"
               aria-expanded="false"
-              class="w-full py-5 flex items-center justify-between gap-4 text-left cursor-pointer group"
+              aria-controls="priority-provincial"
+              class="w-full py-7 flex items-center justify-between gap-6 text-left cursor-pointer group"
             >
-              <span class="font-display text-2xl font-bold text-cobalt group-hover:text-cobalt-dark">
+              <span class="font-display text-2xl font-normal tracking-[-0.02em] text-cobalt group-hover:text-cobalt-dark transition-colors">
                 Provincial Priorities
               </span>
-              <span class="text-cobalt text-2xl leading-none font-light shrink-0" data-acc-icon>+</span>
+              <span class="text-cobalt shrink-0 inline-flex items-center justify-center w-6 h-6" aria-hidden="true">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <line x1="12" y1="5" x2="12" y2="19" data-acc-plus />
+                </svg>
+              </span>
             </button>
-            <div id="priority-provincial" class="hidden pb-6 space-y-5">
+            <div id="priority-provincial" class="hidden pb-7 space-y-6">
               {provincialPriorities.map((item) => (
-                <div class="space-y-1">
-                  <h3 class="font-display text-lg font-bold text-ink">{item.title}</h3>
-                  <p class="text-sm text-charcoal leading-relaxed">{item.summary}</p>
+                <div class="space-y-1.5">
+                  <h3 class="font-display text-xl font-normal tracking-[-0.02em] text-cobalt">{item.title}</h3>
+                  <p class="text-sm sm:text-base text-charcoal leading-[1.6]">{item.summary}</p>
                 </div>
               ))}
             </div>
@@ -228,14 +275,14 @@ import {
   <!-- SEC 6 [bright]: Fraud Statement Banner -->
   <section class="bg-cobalt text-white py-14 lg:py-20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
-      <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Fraud Statement</h2>
-      <p class="text-base sm:text-lg text-white/90">
+      <h2 class="font-display text-3xl sm:text-4xl font-normal tracking-[-0.02em] text-white">Fraud Statement</h2>
+      <p class="text-base sm:text-lg text-white/95">
         An important note about Fraud and Impersonation of Canadian Bitcoin Consortium Staff
       </p>
-      <div>
+      <div class="pt-1">
         <a
           href="/fraud-statement"
-          class="inline-flex items-center justify-center min-h-11 px-6 py-3 bg-white text-cobalt hover:bg-canvas text-sm font-semibold whitespace-nowrap transition-colors"
+          class="inline-flex items-center justify-center min-h-12 px-6 py-4 rounded-[10px] bg-white text-cobalt hover:bg-canvas text-base font-normal leading-[1.2] whitespace-nowrap transition-colors"
         >
           Learn more
         </a>
@@ -244,23 +291,23 @@ import {
   </section>
 
   <!-- SEC 7 [light-bold]: Who We Are & Leadership Team -->
-  <section class="bg-canvas text-ink py-16 lg:py-24">
+  <section class="relative bg-canvas text-ink pt-16 pb-24 lg:pt-24 lg:pb-32">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
       <div class="max-w-4xl mx-auto text-center space-y-5">
-        <h2 class="font-display text-4xl sm:text-5xl font-bold text-cobalt">
+        <h2 class="font-display text-4xl sm:text-5xl font-normal tracking-[-0.02em] text-cobalt">
           Who We Are
         </h2>
-        <p class="text-base sm:text-lg text-charcoal leading-relaxed">
+        <p class="text-base sm:text-lg text-charcoal leading-[1.6]">
           The Canadian Bitcoin Consortium is led by a passionate team dedicated to advancing sound monetary and energy policy, strengthening Canada’s competitive position in the global Bitcoin economy, and driving responsible industry growth. Through advocacy, education, grassroots community engagement, and collaboration with government, regulators, and industry leaders, we are building the foundation for a thriving digital asset ecosystem that creates jobs, attracts investment, and empowers Canadians to participate in the financial and energy innovations of the future.
         </p>
-        <h3 class="font-display text-2xl sm:text-3xl font-bold text-cobalt pt-4">
+        <h3 class="font-display text-2xl sm:text-3xl font-normal tracking-[-0.02em] text-cobalt pt-4">
           Our Leadership Team
         </h3>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         {leadershipTeam.map((leader) => (
-          <article class="space-y-4 text-center">
+          <article class="space-y-5 text-center">
             <div class="aspect-square overflow-hidden bg-surface">
               <img
                 src={leader.image}
@@ -269,26 +316,34 @@ import {
               />
             </div>
             <div class="space-y-1">
-              <h4 class="font-display text-2xl font-bold text-cobalt">{leader.name}</h4>
+              <h4 class="font-display text-2xl font-normal tracking-[-0.02em] text-cobalt">{leader.name}</h4>
               <p class="text-sm text-charcoal">{leader.role}</p>
             </div>
             <div>
-              <button
-                type="button"
-                data-leader-slug={leader.slug}
-                class="inline-flex items-center justify-center min-h-10 px-6 py-2.5 bg-cobalt hover:bg-cobalt-dark text-white text-xs sm:text-sm font-semibold cursor-pointer transition-colors"
+              <a
+                href={`/${leader.slug}`}
+                class="inline-flex items-center justify-center min-h-12 px-6 py-3.5 rounded-[10px] bg-cobalt hover:bg-cobalt-dark text-white text-base font-normal leading-[1.2] transition-colors"
               >
                 View Full Bio
-              </button>
+              </a>
             </div>
           </article>
         ))}
       </div>
     </div>
+
+    <svg
+      class="absolute bottom-0 left-0 w-full h-7 sm:h-10 text-[#0e2378] pointer-events-none"
+      viewBox="0 0 1440 48"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path fill="currentColor" d="M0,48 L0,24 C420,44 1020,2 1440,26 L1440,48 Z" />
+    </svg>
   </section>
 
   <!-- SEC 8 [bright]: Our Vision (Bitcoin Wood Left + Text Right) & Mission (4 Photo+Text Columns + Full-Width View Events) -->
-  <section class="relative bg-[#0e2378] text-white py-16 lg:py-24 overflow-hidden">
+  <section class="relative bg-[#0e2378] text-white pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
     <img
       src={siteImages.missionWave}
       alt=""
@@ -296,6 +351,7 @@ import {
       class="absolute inset-0 w-full h-full object-cover opacity-75 pointer-events-none"
     />
     <div class="absolute inset-0 bg-[#0e2378]/35 pointer-events-none"></div>
+
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       <!-- Top Vision Split: Image Left + Vision Text Right -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -307,8 +363,8 @@ import {
           />
         </div>
         <div class="lg:col-span-7 space-y-4">
-          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Our Vision</h2>
-          <p class="text-base sm:text-lg text-white/95 leading-relaxed">
+          <h2 class="font-display text-3xl sm:text-4xl font-normal tracking-[-0.02em] text-white">Our Vision</h2>
+          <p class="text-base sm:text-lg text-white/95 leading-[1.6]">
             To establish Canada as one of the top 10 global jurisdictions for Bitcoin by supporting Canada’s development of a national Bitcoin reserve, securing over 20% of the world’s Bitcoin hashrate with Bitcoin Mining, and positioning the country as a global leader in sound monetary and energy policy.
           </p>
         </div>
@@ -317,8 +373,8 @@ import {
       <!-- Mission Intro + 4 Columns (Photo on Top, Centered Heading + Copy Below) -->
       <div class="space-y-10">
         <div class="max-w-4xl mx-auto text-center space-y-3">
-          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Mission</h2>
-          <p class="text-base sm:text-lg text-white/95 leading-relaxed">
+          <h2 class="font-display text-3xl sm:text-4xl font-normal tracking-[-0.02em] text-white">Mission</h2>
+          <p class="text-base sm:text-lg text-white/95 leading-[1.6]">
             The Canadian Bitcoin Consortium advances this vision through advocacy, convening, policy development, and trade missions that drive adoption, attract investment, and create mortgage-paying jobs for Canadians.
           </p>
         </div>
@@ -326,32 +382,32 @@ import {
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div class="space-y-4 text-center">
             <img src={siteImages.missionEvent1} alt="Advocacy" class="w-full aspect-square object-cover" />
-            <h3 class="font-display text-xl font-bold text-white uppercase">ADVOCACY</h3>
-            <p class="text-sm text-white/90 leading-relaxed">
+            <h3 class="font-display text-xl font-normal tracking-[-0.02em] text-white uppercase">ADVOCACY</h3>
+            <p class="text-sm text-white/90 leading-[1.6]">
               We work with all levels of government to advance meaningful conversations that shape Bitcoin adoption, promote sound energy policy, and strengthen Canada’s global competitiveness.
             </p>
           </div>
 
           <div class="space-y-4 text-center">
             <img src={siteImages.missionEvent2} alt="Convening" class="w-full aspect-square object-cover" />
-            <h3 class="font-display text-xl font-bold text-white uppercase">CONVENING</h3>
-            <p class="text-sm text-white/90 leading-relaxed">
+            <h3 class="font-display text-xl font-normal tracking-[-0.02em] text-white uppercase">CONVENING</h3>
+            <p class="text-sm text-white/90 leading-[1.6]">
               We bring together government, regulators, and industry leaders through high-impact events across Canada, fostering dialogue, building relationships, and addressing policy challenges.
             </p>
           </div>
 
           <div class="space-y-4 text-center">
             <img src={siteImages.missionEvent3} alt="Policy Development and Research" class="w-full aspect-square object-cover" />
-            <h3 class="font-display text-xl font-bold text-white uppercase">POLICY DEVELOPMENT &amp; RESEARCH</h3>
-            <p class="text-sm text-white/90 leading-relaxed">
+            <h3 class="font-display text-xl font-normal tracking-[-0.02em] text-white uppercase">POLICY DEVELOPMENT &amp; RESEARCH</h3>
+            <p class="text-sm text-white/90 leading-[1.6]">
               We create forward-thinking policy positions and publish research to inform regulators and policymakers, ensuring Canada is equipped to lead in the global digital economy.
             </p>
           </div>
 
           <div class="space-y-4 text-center">
             <img src={siteImages.missionEvent4} alt="Trade Missions" class="w-full aspect-square object-cover" />
-            <h3 class="font-display text-xl font-bold text-white uppercase">TRADE MISSIONS</h3>
-            <p class="text-sm text-white/90 leading-relaxed">
+            <h3 class="font-display text-xl font-normal tracking-[-0.02em] text-white uppercase">TRADE MISSIONS</h3>
+            <p class="text-sm text-white/90 leading-[1.6]">
               We host national and international trade missions that attract billions in investment, showcase Canada’s strengths, and encourage global businesses to expand into the Canadian market.
             </p>
           </div>
@@ -360,13 +416,22 @@ import {
         <div class="pt-2">
           <a
             href="/events"
-            class="w-full inline-flex items-center justify-center min-h-12 px-6 py-3 bg-white text-cobalt hover:bg-canvas text-sm font-semibold transition-colors"
+            class="w-full inline-flex items-center justify-center min-h-12 px-6 py-4 rounded-[10px] bg-white text-cobalt hover:bg-canvas text-base font-normal leading-[1.2] transition-colors"
           >
             View our Events
           </a>
         </div>
       </div>
     </div>
+
+    <svg
+      class="absolute bottom-0 left-0 w-full h-7 sm:h-10 text-surface pointer-events-none"
+      viewBox="0 0 1440 48"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path fill="currentColor" d="M0,48 L0,20 C460,44 980,4 1440,28 L1440,48 Z" />
+    </svg>
   </section>
 
   <!-- SEC 9: Warden Insurance -->
@@ -380,17 +445,17 @@ import {
         />
       </div>
       <div class="md:col-span-8 space-y-4">
-        <h2 class="font-display text-2xl sm:text-3xl font-bold text-cobalt">
+        <h2 class="font-display text-2xl sm:text-3xl font-normal tracking-[-0.02em] text-cobalt">
           CBC members now have access to purpose-built insurance.
         </h2>
-        <p class="text-base text-charcoal leading-relaxed">
+        <p class="text-base text-charcoal leading-[1.6]">
           Warden Insurance Inc. was created to provide credible, cost-effective coverage designed around the real operational risks of digital asset businesses—built with the industry, not forced into outdated templates.
         </p>
         <a
           href="https://www.wardeninsurance.ca/"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-block text-sm font-semibold text-cobalt underline underline-offset-4 hover:text-cobalt-dark"
+          class="inline-block text-base text-cobalt underline underline-offset-4 hover:text-cobalt-dark"
         >
           Learn more here.
         </a>
@@ -401,130 +466,37 @@ import {
   <!-- SEC 10 [white-bold]: Membership CTA -->
   <section class="bg-surface text-ink py-16 lg:py-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-      <h2 class="font-display text-2xl sm:text-4xl font-bold text-cobalt leading-snug">
+      <h2 class="font-display text-2xl sm:text-4xl font-normal leading-[1.25] tracking-[-0.02em] text-cobalt">
         Joining the Canadian Bitcoin Consortium means contributing to a stronger, more connected Bitcoin industry that drives innovation, investment, and opportunity across Canada.
       </h2>
       <div>
         <a
           href="/membership"
-          class="inline-flex items-center justify-center min-h-12 px-7 py-3 bg-cobalt hover:bg-cobalt-dark text-white text-sm font-semibold whitespace-nowrap transition-colors"
+          class="inline-flex items-center justify-center min-h-12 px-7 py-4 rounded-[10px] bg-cobalt hover:bg-cobalt-dark text-white text-base font-normal leading-[1.2] whitespace-nowrap transition-colors"
         >
           View Membership Benefits
         </a>
       </div>
     </div>
   </section>
-
-  <!-- Leadership Bio Modal -->
-  <div
-    id="leader-modal"
-    class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="leader-modal-name"
-  >
-    <div class="bg-surface border border-hairline rounded-lg max-w-xl w-full p-6 sm:p-8 space-y-6 shadow-xl">
-      <div class="flex items-start justify-between gap-4 border-b border-hairline pb-4">
-        <div class="flex items-center gap-4">
-          <img id="leader-modal-img" src="" alt="" class="w-16 h-16 rounded-md object-cover object-top border border-hairline" />
-          <div>
-            <p id="leader-modal-role" class="text-xs font-mono text-cobalt font-medium"></p>
-            <h3 id="leader-modal-name" class="font-display text-2xl font-bold text-cobalt"></h3>
-            <p id="leader-modal-location" class="text-xs text-charcoal"></p>
-          </div>
-        </div>
-        <button
-          id="close-leader-modal"
-          type="button"
-          aria-label="Close biography"
-          class="w-10 h-10 rounded-md border border-hairline flex items-center justify-center text-ink hover:bg-canvas cursor-pointer shrink-0"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-      <div id="leader-modal-bio" class="space-y-3 text-sm sm:text-base text-charcoal leading-relaxed"></div>
-      <div id="leader-modal-focus" class="pt-4 border-t border-hairline text-xs font-mono text-charcoal"></div>
-    </div>
-  </div>
-
-  <!-- About Us Brochure Modal -->
-  <div
-    id="brochure-modal"
-    class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="brochure-modal-title"
-  >
-    <div class="bg-surface border border-hairline rounded-lg max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-xl max-h-[90vh] overflow-y-auto">
-      <div class="flex items-start justify-between gap-4 border-b border-hairline pb-4">
-        <div>
-          <p class="text-xs font-mono text-cobalt font-medium">2025 CBC About Us Brochure</p>
-          <h3 id="brochure-modal-title" class="font-display text-2xl sm:text-3xl font-bold text-cobalt mt-1">
-            Canadian Bitcoin Consortium
-          </h3>
-        </div>
-        <button
-          id="close-brochure-modal"
-          type="button"
-          aria-label="Close brochure preview"
-          class="w-10 h-10 rounded-md border border-hairline flex items-center justify-center text-ink hover:bg-canvas cursor-pointer"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-      <div class="space-y-4 text-sm text-charcoal leading-relaxed">
-        <p class="text-ink font-semibold">
-          An Advocacy Group dedicated to sound monetary and energy policy for the betterment of all Canadians.
-        </p>
-        <p>
-          Our national coalition unites mining operators, regulated trading platforms, institutional custodians, legal advisors, and energy producers to give policymakers practical, technical insight.
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-          <div class="p-4 bg-canvas border border-hairline">
-            <p class="font-semibold text-cobalt text-sm">Federal Priorities</p>
-            <p class="text-xs text-charcoal mt-1">Recognized asset classification, de minimis tax rule, TFSA inclusion, and mining GST exemption.</p>
-          </div>
-          <div class="p-4 bg-canvas border border-hairline">
-            <p class="font-semibold text-cobalt text-sm">Provincial Priorities</p>
-            <p class="text-xs text-charcoal mt-1">Energy policy reform, rural economic investment, provincial reserves, and regulatory alignment.</p>
-          </div>
-        </div>
-      </div>
-      <div class="pt-4 border-t border-hairline flex flex-wrap items-center justify-between gap-3">
-        <a
-          href="/membership"
-          class="inline-flex items-center justify-center min-h-11 px-5 py-2.5 bg-cobalt hover:bg-cobalt-dark text-white text-sm font-semibold"
-        >
-          View Membership Benefits
-        </a>
-        <a
-          href="/policies-research"
-          class="text-sm font-semibold text-cobalt hover:underline underline-offset-4"
-        >
-          Go to Policies &amp; Research
-        </a>
-      </div>
-    </div>
-  </div>
 </BaseLayout>
 
-<script define:vars={{ leadershipTeam }}>
-  // Accordion toggles for "What we do" & "Policy Priorities"
-  document.querySelectorAll('[data-acc-toggle]').forEach((btn) => {
+<script>
+  // Interactive Accordion Toggles ("What we do" & "Policy Priorities")
+  document.querySelectorAll<HTMLButtonElement>('[data-acc-toggle]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const targetId = btn.getAttribute('data-acc-toggle');
       const panel = targetId ? document.getElementById(targetId) : null;
-      const icon = btn.querySelector('[data-acc-icon]');
+      const plusBar = btn.querySelector<SVGLineElement>('[data-acc-plus]');
       if (!panel) return;
 
       const isOpen = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!isOpen));
-      panel.classList.toggle('hidden', isOpen);
-      if (icon) icon.textContent = isOpen ? '+' : '−';
+      const nextOpen = !isOpen;
+      btn.setAttribute('aria-expanded', String(nextOpen));
+      panel.classList.toggle('hidden', !nextOpen);
+      if (plusBar) {
+        plusBar.style.display = nextOpen ? 'none' : 'block';
+      }
     });
   });
 
@@ -534,18 +506,20 @@ import {
   const searchResults = document.getElementById('hero-search-results');
 
   const searchIndex = [
-    { title: 'Policies & Research', href: '/policies-research', keywords: 'federal provincial tfsa gst de minimis mining chaos clarity report' },
+    { title: 'Policies & Research', href: '/policies-research', keywords: 'federal provincial tfsa gst de minimis mining chaos clarity report white paper' },
     { title: 'Industry Responses', href: '/industry-responses', keywords: 'osfi basel rpaa bank of canada standing committee finance csa' },
     { title: 'Reports', href: '/reports', keywords: 'annual quarterly bi-annual 2025 2024 2023 impact' },
-    { title: 'Membership & Community', href: '/membership', keywords: 'diamond platinum gold silver bronze warden insurance join' },
+    { title: 'Membership & Community', href: '/membership', keywords: 'diamond platinum gold silver bronze warden insurance join benefits' },
     { title: 'Events & Engagements', href: '/events', keywords: 'summit roundtable trade mission consensus alberta hill day' },
-    { title: 'The BTC Brief', href: '/bitcoin-brief', keywords: 'quebec budget 2025 2026 stampede pre-budget' },
+    { title: 'The BTC Brief', href: '/bitcoin-brief', keywords: 'quebec budget 2025 2026 stampede pre-budget brief' },
+    { title: 'Koleya Karringten — Bio', href: '/koleya', keywords: 'koleya karringten executive director warden' },
+    { title: 'Jade Alberts — Bio', href: '/jade', keywords: 'jade alberts vice president' },
+    { title: 'Sara Ishaq-Raad — Bio', href: '/sara', keywords: 'sara ishaq-raad operations' },
     { title: 'Fraud Statement', href: '/fraud-statement', keywords: 'fraud impersonation staff security' },
     { title: 'Contact', href: '/contact', keywords: 'email info contact ottawa calgary toronto' },
   ];
 
-  searchForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
+  const runSearch = () => {
     if (!searchInput || !searchResults) return;
     const q = searchInput.value.trim().toLowerCase();
     if (!q) {
@@ -571,65 +545,11 @@ import {
       });
     }
     searchResults.classList.remove('hidden');
+  };
+
+  searchForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    runSearch();
   });
-
-  // Leadership Bio Modal
-  const leaderModal = document.getElementById('leader-modal');
-  const closeLeaderBtn = document.getElementById('close-leader-modal');
-  const modalImg = document.getElementById('leader-modal-img');
-  const modalName = document.getElementById('leader-modal-name');
-  const modalRole = document.getElementById('leader-modal-role');
-  const modalLocation = document.getElementById('leader-modal-location');
-  const modalBio = document.getElementById('leader-modal-bio');
-  const modalFocus = document.getElementById('leader-modal-focus');
-
-  document.querySelectorAll('[data-leader-slug]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const slug = btn.getAttribute('data-leader-slug');
-      const leader = leadershipTeam.find((l) => l.slug === slug);
-      if (!leader || !leaderModal) return;
-
-      if (modalImg) {
-        modalImg.setAttribute('src', leader.image);
-        modalImg.setAttribute('alt', leader.name);
-      }
-      if (modalName) modalName.textContent = leader.name;
-      if (modalRole) modalRole.textContent = leader.role;
-      if (modalLocation) modalLocation.textContent = leader.location;
-      if (modalBio) {
-        modalBio.innerHTML = '';
-        leader.fullBio.forEach((p) => {
-          const el = document.createElement('p');
-          el.textContent = p;
-          modalBio.appendChild(el);
-        });
-      }
-      if (modalFocus) {
-        modalFocus.textContent = 'Focus Areas: ' + leader.focusAreas.join(' · ');
-      }
-      leaderModal.classList.remove('hidden');
-    });
-  });
-
-  closeLeaderBtn?.addEventListener('click', () => leaderModal?.classList.add('hidden'));
-  leaderModal?.addEventListener('click', (e) => {
-    if (e.target === leaderModal) leaderModal.classList.add('hidden');
-  });
-
-  const brochureModal = document.getElementById('brochure-modal');
-  const openBrochureBtn = document.getElementById('open-brochure-modal');
-  const closeBrochureBtn = document.getElementById('close-brochure-modal');
-
-  openBrochureBtn?.addEventListener('click', () => brochureModal?.classList.remove('hidden'));
-  closeBrochureBtn?.addEventListener('click', () => brochureModal?.classList.add('hidden'));
-  brochureModal?.addEventListener('click', (e) => {
-    if (e.target === brochureModal) brochureModal.classList.add('hidden');
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      leaderModal?.classList.add('hidden');
-      brochureModal?.classList.add('hidden');
-    }
-  });
+  searchInput?.addEventListener('input', runSearch);
 </script>
